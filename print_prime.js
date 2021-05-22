@@ -1,4 +1,5 @@
-function prime(number){
+self.onmessage = function prime(event){
+var number = event.data;
   if(number>1){
     for (let i =0; i<number; i++){
       flag =0;
@@ -9,13 +10,15 @@ function prime(number){
         }
       }
       if (i>1 && flag == 0){
-        console.log(i);
+	postMessage(i)
+        // console.log(i);
       }
     }
   }
   else{
-    console.log("not prime");
+    postMessage("Numbers less than 2 are not prime")
+    // console.log("not prime");
   }
 }
 
-prime(10);
+//prime(10);
