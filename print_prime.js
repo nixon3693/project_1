@@ -1,9 +1,3 @@
-function prime(){
-// postMessage(localStorage.getItem("number"));
-postMessage("yes");
-}
-
-
 function prime(number){
   if(number>1){
     for (let i =0; i<number; i++){
@@ -15,12 +9,12 @@ function prime(number){
         }
       }
       if (i>1 && flag == 0){
-        console.log(i,)
+        console.log(i);
       }
     }
   }
   else{
-    console.log("not prime")
+    console.log("not prime");
   }
 }
 
