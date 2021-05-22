@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML L3 Assignment</title>
+	</head>
+	<body>
+
+		<p>Enter Number between 1 to 100:<input type="number" id="num" name="num" min="1" max="100"></p>
+		<p>Result:<output id="result"></output></p>
+		<button onclick="start()">Start</button>
+		<button onclick="stop()">Stop</button>
+
+		<script>			
+			var worker_obj;
+			function start(){
+				if(typeof(Worker) !== "undefined"){
+					if(typeof(worker_obj) == "undefined"){
+						worker_obj = new Worker("print_prime.js");
+						worker_obj.postMessage(document.getElementById("num").value)
+						}
+					worker_obj.onmessage = function(event){
+						document.getElementById("result").innerHtml = event.data;
+					}
+				}
+				else{	
+					alert("Browser does not support Webworker");
+				}
+			}
+
+
+			function stop(){
+				worker_obj.terminate();
+				worker_obj = undefined;
+			}
+		</script>
+	</body>
+</html>
